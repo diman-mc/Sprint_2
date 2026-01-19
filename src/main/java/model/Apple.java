@@ -1,11 +1,11 @@
 package model;
 
 import model.constants.Colour;
-import model.constants.Discount;
 
-public class Apple extends Food implements Discountable {
+public class Apple extends Food {
     //у яблока есть поля, яблоко имеет метод getDiscount()
     private String colour;
+
     public Apple(int amount, double price, String colour) { //вход, принимает параметры
         super(amount, price, true); // Яблоки
         this.colour = colour;
@@ -18,9 +18,9 @@ public class Apple extends Food implements Discountable {
 
     @Override //переопределение
     public double getDiscount() {
-        if (colour == Colour.RED) { //если красное
-            return Discount.APPLE_RED_DISC; //то скидка
+        if (Colour.RED.equals(colour)) { //если красное
+            return model.constants.Discount.APPLE_RED_DISC; //то скидка
         }
-            return 0.0;
+        return 0.0;
     }
 }
